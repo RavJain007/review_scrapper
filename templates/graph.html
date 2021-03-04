@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+
+<title>Graph Page</title>
+
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Reviwers Ratings Statistics</h1>
+
+    <div>
+        <img src="/static/plots/graph.png" alt="Product Rating Plot" >
+       <!-- <img src="{{ url_for('static', filename='plots/'+prodName.lower()+'.png') }}" > --!>
+    </div>
+</div>
+{% endblock %}

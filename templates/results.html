@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Review Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <link rel="stylesheet" href="./style2.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style2.css') }}">
+</head>
+
+<body>
+  <div class="table-users">
+   <div class="theader">Reviews</div>
+
+   <table cellspacing="0">
+       <thead>
+           <tr>
+             <th>Product Name</th>
+             <th>Rating</th>
+             <th>Price</th>
+             <th>Top Offers</th>
+             <th>Features</th>
+             <th>Reviewer Name</th>
+             <th>Reviewer Rating</th>
+             <th>Comment Heading</th>
+             <th width="230">Comments</th>
+           </tr>
+       </thead>
+
+         {% for review in reviews %}
+      <tr>
+         <td>{{review['Product Name']}}</td>
+         <td>{{review['Rating']}}
+             <form action="/stats" method="POST">
+                <input type="hidden" name="prdName" value="{{review['Product Name']}}" >
+                <input type="submit" value="View Graph">
+            </form>
+         </td>
+         <td>{{review['Price']}}</td>
+         <td>
+             <ul>
+             {% for offer in review['Offers'] %}
+                <li>{{offer}}</li>
+             {% endfor %}
+             </ul>
+         </td>
+         <td>{{review['Features']}}</td>
+         <td>{{review['Rev Name']}}</td>
+         <td>{{review['Rev Rating']}}</td>
+         <td>{{review['CommentHead']}}</td>
+         <td>{{review['Comment']}} </td>
+       {% endfor %}
+   </table>
+</div>
+
+
+
+</body>
+
+</html>
