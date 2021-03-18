@@ -1,11 +1,11 @@
 version: 0.0
 os: linux
 files:
-  - source: /index.html
+  - source: /app.py
     destination: /var/www/html/
 hooks:
   BeforeInstall:
-    - location: scripts/install_dependencies
+    - location: /requirements
       timeout: 300
       runas: root
     - location: scripts/start_server
