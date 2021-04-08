@@ -1,10 +1,21 @@
 version: 0.0
 os: linux
 files:
-  - source: /app.py
-    destination: /var/www/html/
+  - source: /
+    destination: /home/ec2-user/sample-app
+permissions:
+  - object: /home/ec2-user/sample-app/app.py
+    owner: ec2-user
+    mode: 644
+    type:
+      - file
+  - object: /home/ec2-user/sample-app/requirements.txt
+    owner: ec2-user
+    mode: 644
+    type:
+      - file
 hooks:
-  BeforeInstall:
+  AfterInstall:
     - location: scripts/install_dependencies
       timeout: 300
       runas: root
